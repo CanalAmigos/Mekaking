@@ -4589,13 +4589,28 @@ A GUI panel that displays the game hierarchy.
 					Selection:Set({})
 				elseif option == "CopyPath" then
 					if not Option.Modifiable then return end
+					local function VerifySpace(full)
+						local ReturnFullName = ''
+						local s = tostring(full):split('.')
+						for i,v in pairs(s) do
+							if i > 1 then
+								if string.find(v,' ',1,true) then
+									ReturnFullName = ReturnFullName..'[\''..v..'\']'
+								else
+									ReturnFullName = ReturnFullName..'.'..v
+								end
+							else
+								ReturnFullName = 'game:GetService(\''..v..'\')'
+							end
+						end
+					end
 					local list = Selection:Get()
 					local namefull = ''
 					for i = 1,#list do
 						if i > 1 then
-							namefull = namefull..", "..tostring(list[i]:GetFullName())
+							namefull = namefull..", "..tostring(VerifySpace(list[i]:GetFullName()))
 						else
-							namefull = tostring(list[i]:GetFullName())
+							namefull = tostring(VerifySpace(list[i]:GetFullName()))
 						end
 					end
 					if Clipboard and Clipboard.set then
