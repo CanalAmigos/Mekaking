@@ -4608,9 +4608,9 @@ A GUI panel that displays the game hierarchy.
 					local namefull = ''
 					for i = 1,#list do
 						if i > 1 then
-							namefull = namefull..", "..tostring(VerifySpace(list[i]:GetFullName()))
+							namefull = namefull..", "..tostring(VerifySpace(tostring(list[i]:GetFullName())))
 						else
-							namefull = tostring(VerifySpace(list[i]:GetFullName()))
+							namefull = tostring(VerifySpace(tostring(list[i]:GetFullName())))
 						end
 					end
 					if Clipboard and Clipboard.set then
