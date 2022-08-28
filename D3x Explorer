@@ -4603,6 +4603,7 @@ A GUI panel that displays the game hierarchy.
 								ReturnFullName = 'game:GetService(\''..v..'\')'
 							end
 						end
+						return ReturnFullName
 					end
 					local list = Selection:Get()
 					local namefull = ''
