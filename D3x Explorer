@@ -4598,7 +4598,13 @@ A GUI panel that displays the game hierarchy.
 							namefull = tostring(list[i]:GetFullName())
 						end
 					end
-					setclipboard(namefull)
+					if Clipboard and Clipboard.set then
+						Clipboard.set(namefull)
+					elseif CopyString then
+						CopyString(namefull)
+					elseif setclipboard then
+						setclipboard(namefull)
+					end
 				elseif option == "Group" then
 					if not Option.Modifiable then return end
 					local newModel = Instance.new("Model")
