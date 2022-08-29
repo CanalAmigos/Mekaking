@@ -8409,7 +8409,8 @@ spawn(function()
 		end
 		return toConvert
 	end
-
+	
+	local RunService = game:GetService('RunService')
 	function buildScript(source,xOff,yOff,override)
 		local buildingRows = true
 		local buildScr = source
@@ -8425,7 +8426,7 @@ spawn(function()
 		if override then
 			currentSource = source
 			entries = {}
-			while buildingRows do
+			while buildingRows do RunService.RenderStepped:Wait()
 				local x,y = string.find(buildScr,"\n")
 				if x and y then
 					table.insert(entries,string.sub(buildScr,1,y))
@@ -8490,7 +8491,7 @@ spawn(function()
 			end
 		end
 
-		while true do
+		while true do RunService.RenderStepped:Wait()
 			if currentRow > #workingEntries or currentRow > #grid[1] then break end
 			local entry = workingEntries[currentRow+yOff]
 			while string.len(entry) > 0 do
