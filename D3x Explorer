@@ -8410,8 +8410,8 @@ spawn(function()
 		return toConvert
 	end
 	
-	local RunService = game:GetService('RunService')
-	function buildScript(source,xOff,yOff,override)
+	local RunService = game:GetService('RunService') -- for not crash the game with big scripts
+	function buildScript(source,xOff,yOff,override,userun)
 		local buildingRows = true
 		local buildScr = source
 
@@ -8426,7 +8426,7 @@ spawn(function()
 		if override then
 			currentSource = source
 			entries = {}
-			while buildingRows do RunService.RenderStepped:Wait()
+			while buildingRows do if userun then RunService.RenderStepped:Wait() end
 				local x,y = string.find(buildScr,"\n")
 				if x and y then
 					table.insert(entries,string.sub(buildScr,1,y))
@@ -8491,7 +8491,7 @@ spawn(function()
 			end
 		end
 
-		while true do RunService.RenderStepped:Wait()
+		while true do if userun then RunService.RenderStepped:Wait() end
 			if currentRow > #workingEntries or currentRow > #grid[1] then break end
 			local entry = workingEntries[currentRow+yOff]
 			while string.len(entry) > 0 do
@@ -8596,7 +8596,7 @@ spawn(function()
 			for i,v in pairs(scriptBar:GetChildren()) do
 				if v == newTab then
 					editingIndex = i
-					buildScript(memoryScripts[i].Source,0,0,true)
+					buildScript(memoryScripts[i].Source,0,0,true,true)
 					scrollBar:ScrollTo(1)
 					scrollBar:Update()
 					scrollBarH:ScrollTo(1)
@@ -8612,7 +8612,7 @@ spawn(function()
 					if editingIndex == i then
 						editingIndex = #memoryScripts
 						if editingIndex > 0 then
-							buildScript(memoryScripts[#memoryScripts].Source,0,0,true)
+							buildScript(memoryScripts[#memoryScripts].Source,0,0,true,true)
 						else
 							buildScript("",0,0,true)
 						end
@@ -8635,7 +8635,7 @@ spawn(function()
 		end)
 
 		editingIndex = #memoryScripts
-		buildScript(scrSource,0,0,true)
+		buildScript(scrSource,0,0,true,true)
 
 		newTab.Parent = scriptBar
 	end
