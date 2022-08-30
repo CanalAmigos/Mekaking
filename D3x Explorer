@@ -1874,11 +1874,11 @@ spawn(function()
 			if on then
 				newSetting.Change.Bar:TweenPosition(UDim2.new(0,32,0,-2),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.25,true)
 				newSetting.Change.OnBar:TweenSize(UDim2.new(0,34,0,15),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.25,true)
-				newSetting.Status.Text = "On"
+				pcall(function() newSetting.Status.Text = "On" end)
 			else
 				newSetting.Change.Bar:TweenPosition(UDim2.new(0,-2,0,-2),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.25,true)
 				newSetting.Change.OnBar:TweenSize(UDim2.new(0,0,0,15),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.25,true)
-				newSetting.Status.Text = "Off"
+				pcall(function() newSetting.Status.Text = "Off" end)
 			end
 			Settings[interName] = not Settings[interName]
 		end	
