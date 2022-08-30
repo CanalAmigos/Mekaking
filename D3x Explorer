@@ -163,9 +163,12 @@ CreateGui = function()
 	local NewGuiPart162 = Instance.new("BindableFunction")
 	local NewGuiPart163 = Instance.new("BindableEvent")
 	-- Properties
-
+	
+	local ProtectGui = protectgui or (syn and syn.protect_gui) or (function(P) end)
+	
 	NewGuiPart1.Name = "Dex"
 	NewGuiPart1.ResetOnSpawn = false
+	ProtectGui(NewGuiPart1)
 
 	NewGuiPart2.Name = "PropertiesFrame"
 	NewGuiPart2.Parent = NewGuiPart1
