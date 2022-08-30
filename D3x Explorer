@@ -173,7 +173,7 @@ CreateGui = function()
 	NewGuiPart2.Name = "PropertiesFrame"
 	NewGuiPart2.Parent = NewGuiPart1
 	NewGuiPart2.Active = true
-	NewGuiPart2.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart2.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart2.BackgroundTransparency = 0.10000000149012
 	NewGuiPart2.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
 	NewGuiPart2.Position = UDim2.new(1, 0, 0.5, 36)
@@ -193,7 +193,7 @@ CreateGui = function()
 
 	NewGuiPart3.Name = "Header"
 	NewGuiPart3.Parent = NewGuiPart2
-	NewGuiPart3.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart3.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart3.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart3.Position = UDim2.new(0, 0, 0, -36)
 	NewGuiPart3.Size = UDim2.new(1, 0, 0, 35)
@@ -248,7 +248,7 @@ CreateGui = function()
 
 	NewGuiPart7.Name = "SideMenu"
 	NewGuiPart7.Parent = NewGuiPart1
-	NewGuiPart7.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart7.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart7.BackgroundTransparency = 1
 	NewGuiPart7.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart7.BorderSizePixel = 0
@@ -260,7 +260,7 @@ CreateGui = function()
 	NewGuiPart8.Name = "Toggle"
 	NewGuiPart8.Parent = NewGuiPart7
 	NewGuiPart8.Active = false
-	NewGuiPart8.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart8.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart8.BorderSizePixel = 0
 	NewGuiPart8.Position = UDim2.new(0, 0, 0, 60)
 	NewGuiPart8.Size = UDim2.new(0, 30, 0, 30)
@@ -296,7 +296,7 @@ CreateGui = function()
 
 	NewGuiPart11.Name = "Slant"
 	NewGuiPart11.Parent = NewGuiPart7
-	NewGuiPart11.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart11.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
 	NewGuiPart11.BackgroundTransparency = 1
 	NewGuiPart11.Position = UDim2.new(0, 0, 0, 90)
 	NewGuiPart11.Rotation = 180
@@ -306,13 +306,13 @@ CreateGui = function()
 
 	NewGuiPart12.Name = "Main"
 	NewGuiPart12.Parent = NewGuiPart7
-	NewGuiPart12.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart12.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart12.BorderSizePixel = 0
 	NewGuiPart12.Size = UDim2.new(0, 30, 0, 30)
 
 	NewGuiPart13.Name = "SlideOut"
 	NewGuiPart13.Parent = NewGuiPart7
-	NewGuiPart13.BackgroundColor3 = Color3.new(0.862745, 0.862745, 0.862745)
+	NewGuiPart13.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart13.BackgroundTransparency = 1
 	NewGuiPart13.BorderSizePixel = 0
 	NewGuiPart13.ClipsDescendants = true
@@ -321,14 +321,14 @@ CreateGui = function()
 
 	NewGuiPart14.Name = "SlideFrame"
 	NewGuiPart14.Parent = NewGuiPart13
-	NewGuiPart14.BackgroundColor3 = Color3.new(0.862745, 0.862745, 0.862745)
+	NewGuiPart14.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart14.BorderSizePixel = 0
 	NewGuiPart14.Position = UDim2.new(0, 0, 0, -150)
 	NewGuiPart14.Size = UDim2.new(0, 30, 0, 150)
 
 	NewGuiPart15.Name = "Explorer"
 	NewGuiPart15.Parent = NewGuiPart14
-	NewGuiPart15.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart15.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 	NewGuiPart15.BackgroundTransparency = 1
 	NewGuiPart15.BorderSizePixel = 0
 	NewGuiPart15.Position = UDim2.new(0, 0, 0, 120)
@@ -351,7 +351,7 @@ CreateGui = function()
 
 	NewGuiPart17.Name = "SaveMap"
 	NewGuiPart17.Parent = NewGuiPart14
-	NewGuiPart17.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart17.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 	NewGuiPart17.BackgroundTransparency = 1
 	NewGuiPart17.BorderSizePixel = 0
 	NewGuiPart17.Position = UDim2.new(0, 0, 0, 90)
@@ -374,7 +374,7 @@ CreateGui = function()
 
 	NewGuiPart19.Name = "Settings"
 	NewGuiPart19.Parent = NewGuiPart14
-	NewGuiPart19.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart19.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 	NewGuiPart19.BackgroundTransparency = 1
 	NewGuiPart19.BorderSizePixel = 0
 	NewGuiPart19.Position = UDim2.new(0, 0, 0, 30)
@@ -397,7 +397,7 @@ CreateGui = function()
 
 	NewGuiPart21.Name = "Remotes"
 	NewGuiPart21.Parent = NewGuiPart14
-	NewGuiPart21.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart21.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 	NewGuiPart21.BackgroundTransparency = 1
 	NewGuiPart21.BorderSizePixel = 0
 	NewGuiPart21.Position = UDim2.new(0, 0, 0, 60)
@@ -420,7 +420,7 @@ CreateGui = function()
 
 	NewGuiPart23.Name = "About"
 	NewGuiPart23.Parent = NewGuiPart14
-	NewGuiPart23.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart23.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart23.BackgroundTransparency = 1
 	NewGuiPart23.BorderSizePixel = 0
 	NewGuiPart23.Size = UDim2.new(0, 30, 0, 30)
@@ -443,7 +443,7 @@ CreateGui = function()
 	NewGuiPart25.Name = "OpenScriptEditor"
 	NewGuiPart25.Parent = NewGuiPart7
 	NewGuiPart25.Active = false
-	NewGuiPart25.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart25.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart25.BorderSizePixel = 0
 	NewGuiPart25.Position = UDim2.new(0, 0, 0, 30)
 	NewGuiPart25.Size = UDim2.new(0, 30, 0, 30)
@@ -476,9 +476,9 @@ CreateGui = function()
 
 	NewGuiPart28.Name = "SettingsPanel"
 	NewGuiPart28.Parent = NewGuiPart1
-	NewGuiPart28.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart28.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart28.BackgroundTransparency = 0.10000000149012
-	NewGuiPart28.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
+	NewGuiPart28.BorderColor3 = Color3.fromRGB(20, 0, 20)
 	NewGuiPart28.Position = UDim2.new(1, 0, 0, 0)
 	NewGuiPart28.Size = UDim2.new(0, 300, 1, 0)
 
@@ -488,8 +488,8 @@ CreateGui = function()
 
 	NewGuiPart29.Name = "Header"
 	NewGuiPart29.Parent = NewGuiPart28
-	NewGuiPart29.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
-	NewGuiPart29.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
+	NewGuiPart29.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NewGuiPart29.BorderColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart29.Size = UDim2.new(1, 0, 0, 17)
 
 	NewGuiPart30.Parent = NewGuiPart29
@@ -572,7 +572,7 @@ CreateGui = function()
 	NewGuiPart38.Name = "SaveInstance"
 	NewGuiPart38.Parent = NewGuiPart1
 	NewGuiPart38.Active = true
-	NewGuiPart38.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart38.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart38.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart38.Draggable = true
 	NewGuiPart38.Position = UDim2.new(0.300000012, 0, 0.300000012, 0)
@@ -593,7 +593,7 @@ CreateGui = function()
 
 	NewGuiPart40.Name = "MainWindow"
 	NewGuiPart40.Parent = NewGuiPart38
-	NewGuiPart40.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart40.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart40.BackgroundTransparency = 0.10000000149012
 	NewGuiPart40.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
 	NewGuiPart40.Size = UDim2.new(1, 0, 0, 200)
@@ -656,7 +656,7 @@ CreateGui = function()
 
 	NewGuiPart46.Name = "enabled"
 	NewGuiPart46.Parent = NewGuiPart45
-	NewGuiPart46.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
+	NewGuiPart46.BackgroundColor3 = Color3.fromRGB(97, 97, 97)
 	NewGuiPart46.BackgroundTransparency = 0.40000000596046
 	NewGuiPart46.BorderSizePixel = 0
 	NewGuiPart46.Position = UDim2.new(0, 3, 0, 3)
@@ -679,8 +679,8 @@ CreateGui = function()
 	NewGuiPart48.Name = "Confirmation"
 	NewGuiPart48.Parent = NewGuiPart1
 	NewGuiPart48.Active = true
-	NewGuiPart48.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
-	NewGuiPart48.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
+	NewGuiPart48.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NewGuiPart48.BorderColor3 = Color3.fromRGB(149, 149, 149)
 	NewGuiPart48.Draggable = true
 	NewGuiPart48.Position = UDim2.new(0.300000012, 0, 0.349999994, 0)
 	NewGuiPart48.Size = UDim2.new(0, 350, 0, 20)
@@ -700,15 +700,15 @@ CreateGui = function()
 
 	NewGuiPart50.Name = "MainWindow"
 	NewGuiPart50.Parent = NewGuiPart48
-	NewGuiPart50.BackgroundColor3 = Color3.new(1, 1, 1)
-	NewGuiPart50.BackgroundTransparency = 0.10000000149012
+	NewGuiPart50.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+	NewGuiPart50.BackgroundTransparency = 0.1
 	NewGuiPart50.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
 	NewGuiPart50.Size = UDim2.new(1, 0, 0, 150)
 	NewGuiPart50.ZIndex = 2
 
 	NewGuiPart51.Name = "Yes"
 	NewGuiPart51.Parent = NewGuiPart50
-	NewGuiPart51.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart51.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
 	NewGuiPart51.BackgroundTransparency = 0.5
 	NewGuiPart51.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart51.Position = UDim2.new(0.075000003, 0, 1, -40)
@@ -720,7 +720,7 @@ CreateGui = function()
 
 	NewGuiPart52.Name = "Desc"
 	NewGuiPart52.Parent = NewGuiPart50
-	NewGuiPart52.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart52.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
 	NewGuiPart52.BackgroundTransparency = 1
 	NewGuiPart52.Position = UDim2.new(0, 0, 0, 20)
 	NewGuiPart52.Size = UDim2.new(1, 0, 0, 40)
@@ -732,7 +732,7 @@ CreateGui = function()
 
 	NewGuiPart53.Name = "No"
 	NewGuiPart53.Parent = NewGuiPart50
-	NewGuiPart53.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart53.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
 	NewGuiPart53.BackgroundTransparency = 0.5
 	NewGuiPart53.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart53.Position = UDim2.new(0.524999976, 0, 1, -40)
@@ -745,8 +745,8 @@ CreateGui = function()
 	NewGuiPart54.Name = "Caution"
 	NewGuiPart54.Parent = NewGuiPart1
 	NewGuiPart54.Active = true
-	NewGuiPart54.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
-	NewGuiPart54.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
+	NewGuiPart54.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NewGuiPart54.BorderColor3 = Color3.fromRGB(149, 149, 149)
 	NewGuiPart54.Draggable = true
 	NewGuiPart54.Position = UDim2.new(0.300000012, 0, 0.300000012, 0)
 	NewGuiPart54.Size = UDim2.new(0, 350, 0, 20)
@@ -786,7 +786,7 @@ CreateGui = function()
 
 	NewGuiPart58.Name = "Ok"
 	NewGuiPart58.Parent = NewGuiPart56
-	NewGuiPart58.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart58.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 	NewGuiPart58.BackgroundTransparency = 0.5
 	NewGuiPart58.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart58.Position = UDim2.new(0.300000012, 0, 1, -40)
@@ -799,8 +799,8 @@ CreateGui = function()
 	NewGuiPart59.Name = "CallRemote"
 	NewGuiPart59.Parent = NewGuiPart1
 	NewGuiPart59.Active = true
-	NewGuiPart59.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
-	NewGuiPart59.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
+	NewGuiPart59.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NewGuiPart59.BorderSizePixel = 0
 	NewGuiPart59.Draggable = true
 	NewGuiPart59.Position = UDim2.new(0.300000012, 0, 0.300000012, 0)
 	NewGuiPart59.Size = UDim2.new(0, 350, 0, 20)
@@ -906,16 +906,16 @@ CreateGui = function()
 
 	NewGuiPart69.Name = "ArgumentTemplate"
 	NewGuiPart69.Parent = NewGuiPart61
-	NewGuiPart69.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart69.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
 	NewGuiPart69.BackgroundTransparency = 0.5
-	NewGuiPart69.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
+	NewGuiPart69.BorderColor3 = Color3.fromRGB(191, 191, 191)
 	NewGuiPart69.Size = UDim2.new(1, 0, 0, 20)
 	NewGuiPart69.Visible = false
 
 	NewGuiPart70.Name = "Type"
 	NewGuiPart70.Parent = NewGuiPart69
 	NewGuiPart70.BackgroundColor3 = Color3.new(1, 1, 1)
-	NewGuiPart70.BackgroundTransparency = 0.89999997615814
+	NewGuiPart70.BackgroundTransparency = 0.9
 	NewGuiPart70.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart70.Size = UDim2.new(0.400000006, 0, 0, 20)
 	NewGuiPart70.Font = Enum.Font.SourceSans
@@ -957,7 +957,7 @@ CreateGui = function()
 	NewGuiPart74.Name = "TableCaution"
 	NewGuiPart74.Parent = NewGuiPart1
 	NewGuiPart74.Active = true
-	NewGuiPart74.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart74.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart74.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart74.Draggable = true
 	NewGuiPart74.Position = UDim2.new(0.300000012, 0, 0.300000012, 0)
@@ -967,14 +967,14 @@ CreateGui = function()
 
 	NewGuiPart75.Name = "MainWindow"
 	NewGuiPart75.Parent = NewGuiPart74
-	NewGuiPart75.BackgroundColor3 = Color3.new(1, 1, 1)
-	NewGuiPart75.BackgroundTransparency = 0.10000000149012
-	NewGuiPart75.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
+	NewGuiPart75.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+	NewGuiPart75.BackgroundTransparency = 0.1
+	NewGuiPart75.BorderColor3 = Color3.fromRGB(191, 191, 191)
 	NewGuiPart75.Size = UDim2.new(1, 0, 0, 150)
 
 	NewGuiPart76.Name = "Ok"
 	NewGuiPart76.Parent = NewGuiPart75
-	NewGuiPart76.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart76.BackgroundColor3 = Color3.fromRGB(108, 108, 108)
 	NewGuiPart76.BackgroundTransparency = 0.5
 	NewGuiPart76.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart76.Position = UDim2.new(0.300000012, 0, 1, -40)
@@ -996,7 +996,7 @@ CreateGui = function()
 
 	NewGuiPart78.Name = "TableTemplate"
 	NewGuiPart78.Parent = NewGuiPart75
-	NewGuiPart78.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart78.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart78.BackgroundTransparency = 0.5
 	NewGuiPart78.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
 	NewGuiPart78.Size = UDim2.new(1, 0, 0, 20)
@@ -1004,7 +1004,7 @@ CreateGui = function()
 
 	NewGuiPart79.Name = "Type"
 	NewGuiPart79.Parent = NewGuiPart78
-	NewGuiPart79.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart79.BackgroundColor3 = Color3.fromRGB(102, 102, 102)
 	NewGuiPart79.BackgroundTransparency = 0.89999997615814
 	NewGuiPart79.Size = UDim2.new(0.400000006, 0, 0, 20)
 	NewGuiPart79.Font = Enum.Font.SourceSans
@@ -1013,7 +1013,7 @@ CreateGui = function()
 
 	NewGuiPart80.Name = "Value"
 	NewGuiPart80.Parent = NewGuiPart78
-	NewGuiPart80.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart80.BackgroundColor3 = Color3.fromRGB(102, 102, 102)
 	NewGuiPart80.BackgroundTransparency = 0.89999997615814
 	NewGuiPart80.Position = UDim2.new(0.400000006, 0, 0, 0)
 	NewGuiPart80.Size = UDim2.new(0.600000024, -12, 0, 20)
@@ -1035,7 +1035,7 @@ CreateGui = function()
 	NewGuiPart82.Name = "ScriptEditor"
 	NewGuiPart82.Parent = NewGuiPart1
 	NewGuiPart82.Active = true
-	NewGuiPart82.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart82.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 	NewGuiPart82.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart82.Draggable = true
 	NewGuiPart82.Position = UDim2.new(0.300000012, 0, 0.300000012, 0)
@@ -1074,7 +1074,7 @@ CreateGui = function()
 
 	NewGuiPart86.Name = "TopBar"
 	NewGuiPart86.Parent = NewGuiPart82
-	NewGuiPart86.BackgroundColor3 = Color3.new(0.941177, 0.941177, 0.941177)
+	NewGuiPart86.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 	NewGuiPart86.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart86.Size = UDim2.new(1, 0, 3, 0)
 
@@ -1176,7 +1176,7 @@ CreateGui = function()
 
 	NewGuiPart99.Name = "Clipboard"
 	NewGuiPart99.Parent = NewGuiPart86
-	NewGuiPart99.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart99.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
 	NewGuiPart99.BackgroundTransparency = 0.5
 	NewGuiPart99.BorderColor3 = Color3.new(0, 0, 0)
 	NewGuiPart99.Position = UDim2.new(0, 0, 0, 20)
@@ -1239,7 +1239,7 @@ CreateGui = function()
 
 	NewGuiPart105.Name = "IntroFrame"
 	NewGuiPart105.Parent = NewGuiPart1
-	NewGuiPart105.BackgroundColor3 = Color3.new(0.960784, 0.960784, 0.960784)
+	NewGuiPart105.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 	NewGuiPart105.BorderSizePixel = 0
 	NewGuiPart105.Position = UDim2.new(1, 30, 0, 0)
 	NewGuiPart105.Size = UDim2.new(0, 300, 1, 0)
@@ -1247,7 +1247,7 @@ CreateGui = function()
 
 	NewGuiPart106.Name = "Main"
 	NewGuiPart106.Parent = NewGuiPart105
-	NewGuiPart106.BackgroundColor3 = Color3.new(0.960784, 0.960784, 0.960784)
+	NewGuiPart106.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 	NewGuiPart106.BorderSizePixel = 0
 	NewGuiPart106.Position = UDim2.new(0, -30, 0, 0)
 	NewGuiPart106.Size = UDim2.new(0, 30, 0, 90)
@@ -1292,7 +1292,7 @@ CreateGui = function()
 
 	NewGuiPart110.Name = "Slant"
 	NewGuiPart110.Parent = NewGuiPart105
-	NewGuiPart110.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart110.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 	NewGuiPart110.BackgroundTransparency = 1
 	NewGuiPart110.Position = UDim2.new(0, -30, 0, 90)
 	NewGuiPart110.Rotation = 180
@@ -1303,7 +1303,7 @@ CreateGui = function()
 
 	NewGuiPart111.Name = "SaveMapWindow"
 	NewGuiPart111.Parent = NewGuiPart1
-	NewGuiPart111.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart111.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart111.BackgroundTransparency = 0.10000000149012
 	NewGuiPart111.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
 	NewGuiPart111.Position = UDim2.new(1, 0, 0, 0)
@@ -1311,7 +1311,7 @@ CreateGui = function()
 
 	NewGuiPart112.Name = "Header"
 	NewGuiPart112.Parent = NewGuiPart111
-	NewGuiPart112.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart112.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart112.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart112.Size = UDim2.new(1, 0, 0, 17)
 
@@ -1327,7 +1327,7 @@ CreateGui = function()
 
 	NewGuiPart114.Name = "MapSettings"
 	NewGuiPart114.Parent = NewGuiPart111
-	NewGuiPart114.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart114.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart114.BackgroundTransparency = 1
 	NewGuiPart114.Position = UDim2.new(0, 0, 0, 200)
 	NewGuiPart114.Size = UDim2.new(1, 0, 0, 240)
@@ -1668,9 +1668,9 @@ CreateGui = function()
 
 	NewGuiPart149.Name = "RemoteDebugWindow"
 	NewGuiPart149.Parent = NewGuiPart1
-	NewGuiPart149.BackgroundColor3 = Color3.new(1, 1, 1)
+	NewGuiPart149.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 	NewGuiPart149.BackgroundTransparency = 0.10000000149012
-	NewGuiPart149.BorderColor3 = Color3.new(0.74902, 0.74902, 0.74902)
+	NewGuiPart149.BorderColor3 = Color3.fromRGB(191, 191, 191)
 	NewGuiPart149.Position = UDim2.new(1, 0, 0, 0)
 	NewGuiPart149.Size = UDim2.new(0, 300, 1, 0)
 
@@ -1680,7 +1680,7 @@ CreateGui = function()
 
 	NewGuiPart150.Name = "Header"
 	NewGuiPart150.Parent = NewGuiPart149
-	NewGuiPart150.BackgroundColor3 = Color3.new(0.913726, 0.913726, 0.913726)
+	NewGuiPart150.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NewGuiPart150.BorderColor3 = Color3.new(0.584314, 0.584314, 0.584314)
 	NewGuiPart150.Size = UDim2.new(1, 0, 0, 17)
 
@@ -1914,7 +1914,7 @@ spawn(function()
 		if CurrentWindow == "Explorer" and Settings.ClickSelect then
 			local target = Mouse.Target
 			if target then
-				SetSelection:Invoke({target})
+				bindSetSelection:Invoke({target})
 			end
 		end
 	end)
@@ -4010,7 +4010,7 @@ A GUI panel that displays the game hierarchy.
 			bindGetSelection.Parent = explorerPanel
 		end
 
-		local bindSetSelection = explorerPanel:FindFirstChild("TotallyNotSetSelection")
+		bindSetSelection = explorerPanel:FindFirstChild("TotallyNotSetSelection")
 		if not bindSetSelection then
 			bindSetSelection = Create('BindableFunction',{Name = "TotallyNotSetSelection"})
 			bindSetSelection.Parent = explorerPanel
@@ -6059,6 +6059,7 @@ Change log:
 	local ExplorerFrame = Gui:WaitForChild("ExplorerPanel")
 
 	local bindGetSelection = ExplorerFrame.TotallyNotGetSelection
+	local bindSetSelection = ExplorerFrame.TotallyNotSetSelection
 	local bindSelectionChanged = ExplorerFrame.TotallyNotSelectionChanged
 	local bindGetApi = PropertiesFrame.GetApi
 	local bindGetAwait = PropertiesFrame.GetAwaiting
@@ -6087,7 +6088,7 @@ Change log:
 			return nil
 		else
 			return selection
-		end 
+		end
 	end
 
 	-- Number
