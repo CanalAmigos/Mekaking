@@ -1728,7 +1728,7 @@ spawn(function()
 	local ExplorerButton = SlideFrame:WaitForChild("Explorer")
 	local SettingsButton = SlideFrame:WaitForChild("Settings")
 
-	local SelectionBox = Instance.new("SelectionBox")
+	local SelectionBox = Instance.new('SelectionBox')
 	SelectionBox.Parent = Gui
 
 	local ExplorerPanel = Gui:WaitForChild("ExplorerPanel")
@@ -1919,11 +1919,11 @@ spawn(function()
 		end
 	end)
 
-	TotallyNotSelectionChanged.Event:connect(function()
+	TotallyNotSelectionChanged.Event:Connect(function()
 		if Settings.SelBox then
 			local success,err = pcall(function()
 				local selection = getSelection()
-				SelectionBox.Adornee = selection
+				SelectionBox.Adornee = selection[1]
 			end)
 			if err then
 				SelectionBox.Adornee = nil
