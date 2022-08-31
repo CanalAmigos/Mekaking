@@ -1924,7 +1924,7 @@ spawn(function()
 				local selection = getSelection()
 				SelectionBox.Adornee = selection
 			end)
-			if err then
+			if not success then
 				SelectionBox.Adornee = nil
 			end
 		end
