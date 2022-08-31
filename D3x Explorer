@@ -1727,8 +1727,7 @@ spawn(function()
 	local ExplorerButton = SlideFrame:WaitForChild("Explorer")
 	local SettingsButton = SlideFrame:WaitForChild("Settings")
 
-	local SelectionBox = Instance.new('SelectionBox')
-	SelectionBox.Parent = Gui
+	local SelectionBox = Instance.new('SelectionBox',Gui)
 
 	local ExplorerPanel = Gui:WaitForChild("ExplorerPanel")
 	local PropertiesFrame = Gui:WaitForChild("PropertiesFrame")
@@ -1920,9 +1919,10 @@ spawn(function()
 
 	TotallyNotSelectionChanged.Event:Connect(function()
 		if Settings.SelBox then
+			if SelectionBox == nil then SelectionBox = Instance.new('SelectionBox',Gui) end
 			local success,err = pcall(function()
 				local selection = getSelection()
-				SelectionBox.Adornee = selection[1]
+				SelectionBox.Adornee = selection
 			end)
 			if err then
 				SelectionBox.Adornee = nil
@@ -4614,7 +4614,7 @@ A GUI panel that displays the game hierarchy.
 							table.insert(string, HasSpecial(temp[i]) and "[\"" .. temp[i] .. "\"]" or "." .. temp[i])
 						end
 
-						return (error and "nil -- Path contained invalid instance" or table.concat(string, ""))
+						return (error and "--Path contained invalid instance" or table.concat(string, ""))
 					end
 					local list = Selection:Get()
 					local namefull = ''
@@ -6091,7 +6091,7 @@ Change log:
 		return false
 	end
 
-	local function GetSelection()
+	function GetSelection()
 		local selection = bindGetSelection:Invoke()
 		if #selection == 0 then
 			return nil
