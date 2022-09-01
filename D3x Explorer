@@ -1287,7 +1287,7 @@ CreateGui = function()
 	NewGuiPart109.Font = Enum.Font.SourceSansBold
 	NewGuiPart109.FontSize = Enum.FontSize.Size28
 	NewGuiPart109.RichText = true
-	NewGuiPart109.Text = "Synapse X, Version"
+	NewGuiPart109.Text = "Synapse X".."\n".."Version"
 	NewGuiPart109.TextWrapped = true
 
 	NewGuiPart110.Name = "Slant"
