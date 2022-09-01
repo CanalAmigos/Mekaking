@@ -1286,7 +1286,8 @@ CreateGui = function()
 	NewGuiPart109.ZIndex = 2
 	NewGuiPart109.Font = Enum.Font.SourceSansBold
 	NewGuiPart109.FontSize = Enum.FontSize.Size28
-	NewGuiPart109.Text = "Raspberry Pi , Script Made By Advancedev"
+	NewGuiPart109.RichText = true
+	NewGuiPart109.Text = "Synapse X, Version"
 	NewGuiPart109.TextWrapped = true
 
 	NewGuiPart110.Name = "Slant"
