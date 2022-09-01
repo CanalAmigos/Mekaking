@@ -1924,7 +1924,7 @@ spawn(function()
 				local selection = getSelection()
 				SelectionBox.Adornee = selection
 			end)
-			if not success then
+			if success == false then
 				SelectionBox.Adornee = nil
 			end
 		end
@@ -4723,9 +4723,9 @@ A GUI panel that displays the game hierarchy.
 				elseif option == "View Script" then
 					if not Option.Modifiable then return end
 					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
-							ScriptEditorEvent:Fire(list[i])
+					for _,v in pairs(list) do
+						if v:IsA("LocalScript") or v:IsA("ModuleScript") then
+							ScriptEditorEvent:Fire(v)
 						end
 					end
 				end
@@ -8703,16 +8703,19 @@ spawn(function()
 		end
 		updateScriptBar()
 	end)
-
+	
+	--[[
 	mouse.Button1Down:connect(function()
 		if checkMouseInGui(editorGrid) then
 			--print("LETS EDIT!")
 		end
 	end)
+	--]]
 
-	openEvent.Event:connect(function(...)
+	openEvent.Event:connect(function(get)
 		top.Visible = true
-		local args = {...}
+		local args
+		if typeof(get) ~= 'table' then args = {get} else args = get end
 		if #args > 0 then
 			openScript(args[1])
 		end
