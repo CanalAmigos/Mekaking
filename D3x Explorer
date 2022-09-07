@@ -8627,7 +8627,7 @@ spawn(function()
 						if editingIndex > 0 then
 							buildScript(memoryScripts[#memoryScripts].Source,0,0,true,true)
 						else
-							buildScript("",0,0,true)
+							buildScript("",0,0,true,true)
 						end
 					end
 
@@ -8713,12 +8713,10 @@ spawn(function()
 	end)
 	--]]
 
-	openEvent.Event:connect(function(get)
-		top.Visible = true
-		local args
-		if typeof(get) ~= 'table' then args = {get} else args = get end
-		if #args > 0 then
-			openScript(args[1])
+	openEvent.Event:connect(function(t)
+		if t then
+			top.Visible = true
+			openScript(t)
 		end
 	end)
 
