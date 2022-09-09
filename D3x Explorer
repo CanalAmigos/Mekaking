@@ -4542,7 +4542,7 @@ A GUI panel that displays the game hierarchy.
 		local mouse = game.Players.LocalPlayer:GetMouse()
 
 		currentRightClickMenu = CreateRightClickMenu(
-			{"Cut","Copy","Paste Into","Duplicate","Delete","CopyPath","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
+			{"Cut","Copy","Paste Into","Duplicate","Delete","CopyPath","CopyProperties","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
 			"",
 			false,
 			function(option)
@@ -4632,6 +4632,26 @@ A GUI panel that displays the game hierarchy.
 						CopyString(namefull)
 					elseif setclipboard then
 						setclipboard(namefull)
+					end
+				elseif option == "CopyProperties" then
+					if not Option.Modifiable then return end
+					local list = Selection:Get()
+					local Propertieslist = ''
+					for i = 1,#list do
+						local props = getProperties(list[i].ClassName)
+						Propertieslist = Propertieslist..'local v'..i..' = Instance.new(\''..list[i].ClassName..'\')'
+						for _,v in pairs(props) do
+							if not PropertyIsHidden(v) then
+								Propertieslist = Propertieslist..'v'..i..'.'..v..' = '..list[i][v]..'\n'
+							end
+						end
+					end
+					if Clipboard and Clipboard.set then
+						Clipboard.set(Propertieslist)
+					elseif CopyString then
+						CopyString(Propertieslist)
+					elseif setclipboard then
+						setclipboard(Propertieslist)
 					end
 				elseif option == "Group" then
 					if not Option.Modifiable then return end
@@ -5942,7 +5962,7 @@ Change log:
 			return Enums[name] ~= nil
 		end
 
-		local function getProperties(className)
+		function getProperties(className)
 			local class = Classes[className]
 			local properties = {}
 
@@ -6938,7 +6958,7 @@ Change log:
 	end
 
 	--RbxApi
-	local function PropertyIsHidden(propertyData)
+	function PropertyIsHidden(propertyData)
 		local tags = propertyData["tags"]
 		for _,name in pairs(tags) do
 			if name == "deprecated"
