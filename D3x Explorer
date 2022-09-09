@@ -4542,7 +4542,7 @@ A GUI panel that displays the game hierarchy.
 		local mouse = game.Players.LocalPlayer:GetMouse()
 
 		currentRightClickMenu = CreateRightClickMenu(
-			{"Cut","Copy","Paste Into","Duplicate","Delete","CopyPath","CopyProperties","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
+			{"Cut","Copy","Paste Into","Duplicate","Delete","CopyPath","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
 			"",
 			false,
 			function(option)
@@ -4632,26 +4632,6 @@ A GUI panel that displays the game hierarchy.
 						CopyString(namefull)
 					elseif setclipboard then
 						setclipboard(namefull)
-					end
-				elseif option == "CopyProperties" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					local Propertieslist = ''
-					for i = 1,#list do
-						local props = ClassesProps[list[i].ClassName]
-						if props then
-							Propertieslist = Propertieslist..'local v'..i..' = Instance.new(\''..list[i].ClassName..'\')'
-							for _,v in pairs(props) do
-								Propertieslist = Propertieslist..'v'..i..'.'..v..' = '..list[i][v]..'\n'
-							end
-						end
-					end
-					if Clipboard and Clipboard.set then
-						Clipboard.set(Propertieslist)
-					elseif CopyString then
-						CopyString(Propertieslist)
-					elseif setclipboard then
-						setclipboard(Propertieslist)
 					end
 				elseif option == "Group" then
 					if not Option.Modifiable then return end
@@ -5948,7 +5928,6 @@ Change log:
 
 		local json = getApiJson()
 		local apiDump =  JsonDecode(json)
-		ClassesProps = JsonDecode(game:HttpGet('https://raw.githubusercontent.com/CanalAmigos/Mekaking/main/Classes'))
 
 		local Classes = {}
 		local Enums = {}
