@@ -5948,7 +5948,7 @@ Change log:
 
 		local json = getApiJson()
 		local apiDump =  JsonDecode(json)
-		ClassesProps = JsonDecode(httpGet('https://raw.githubusercontent.com/CanalAmigos/Mekaking/main/Classes'))
+		ClassesProps = JsonDecode(game:HttpGet('https://raw.githubusercontent.com/CanalAmigos/Mekaking/main/Classes'))
 
 		local Classes = {}
 		local Enums = {}
