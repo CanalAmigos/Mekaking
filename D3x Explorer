@@ -4642,7 +4642,7 @@ A GUI panel that displays the game hierarchy.
 						Propertieslist = Propertieslist..'local v'..i..' = Instance.new(\''..list[i].ClassName..'\')'
 						for _,v in pairs(props) do
 							if not PropertyIsHidden(v) then
-								Propertieslist = Propertieslist..'v'..i..'.'..v.Name..' = '..list[i][v.Name]..'\n'
+								Propertieslist = Propertieslist..'v'..i..'.'..v.Text..' = '..list[i][v.Text]..'\n'
 							end
 						end
 					end
