@@ -4638,14 +4638,11 @@ A GUI panel that displays the game hierarchy.
 					local list = Selection:Get()
 					local Propertieslist = ''
 					for i = 1,#list do
-						local props = getProperties(list[i].ClassName)
-						Propertieslist = Propertieslist..'local v'..i..' = Instance.new(\''..list[i].ClassName..'\')'
-						for _,v in pairs(props) do
-							if not PropertyIsHidden(v) then
-								for _,v in pairs(v) do
-									print(v)
-								end
-								Propertieslist = Propertieslist..'v'..i..'.'..v.Name..' = '..list[i][v.Name]..'\n'
+						local props = ClassesProps[list[i].ClassName]
+						if props then
+							Propertieslist = Propertieslist..'local v'..i..' = Instance.new(\''..list[i].ClassName..'\')'
+							for _,v in pairs(props) do
+								Propertieslist = Propertieslist..'v'..i..'.'..v..' = '..list[i][v]..'\n'
 							end
 						end
 					end
@@ -5951,6 +5948,7 @@ Change log:
 
 		local json = getApiJson()
 		local apiDump =  JsonDecode(json)
+		ClassesProps = JsonDecode(httpGet('https://raw.githubusercontent.com/CanalAmigos/Mekaking/main/Classes'))
 
 		local Classes = {}
 		local Enums = {}
@@ -5965,7 +5963,7 @@ Change log:
 			return Enums[name] ~= nil
 		end
 
-		function getProperties(className)
+		local function getProperties(className)
 			local class = Classes[className]
 			local properties = {}
 
@@ -8727,7 +8725,7 @@ spawn(function()
 		end
 		updateScriptBar()
 	end)
-	
+
 	--[[
 	mouse.Button1Down:connect(function()
 		if checkMouseInGui(editorGrid) then
