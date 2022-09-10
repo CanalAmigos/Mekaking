@@ -4648,6 +4648,13 @@ A GUI panel that displays the game hierarchy.
 							end
 						end
 					end
+					if Clipboard and Clipboard.set then
+						Clipboard.set(full)
+					elseif CopyString then
+						CopyString(full)
+					elseif setclipboard then
+						setclipboard(full)
+					end
 				elseif option == "Group" then
 					if not Option.Modifiable then return end
 					local newModel = Instance.new("Model")
