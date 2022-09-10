@@ -4537,12 +4537,54 @@ A GUI panel that displays the game hierarchy.
 			CurrentInsertObjectWindow.Visible = false
 		end
 	end
+	
+	local function HasSpecial(string)
+		return (string:match("%c") or string:match("%s") or string:match("%p") or tonumber(string:sub(1,1))) ~= nil
+	end
+	
+	local function GetPath(Instance)
+		local Obj = Instance
+		local string = {}
+		local temp = {}
+		local error = false
+		while Obj ~= game do
+			if Obj == nil then
+				error = true
+				break
+			end
+			table.insert(temp, Obj.Parent == game and Obj.ClassName or tostring(Obj))
+			Obj = Obj.Parent
+		end
+		table.insert(string, "game:GetService(\""..temp[#temp].."\")")
+		for i = #temp - 1, 1, -1 do
+			table.insert(string, HasSpecial(temp[i]) and "[\""..temp[i].."\"]" or "."..temp[i])
+		end
+		return (error and "--Path contained invalid instance" or table.concat(string, ""))
+	end
 
 	function rightClickMenu(sObj)
 		local mouse = game.Players.LocalPlayer:GetMouse()
 
 		currentRightClickMenu = CreateRightClickMenu(
-			{"Cut","Copy","Paste Into","Duplicate","Delete","CopyPath","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
+			{
+				"Cut",
+				"Copy",
+				"Paste Into",
+				"Duplicate",
+				"Delete",
+				"Group",
+				"Ungroup",
+				"Select Children",
+				"Teleport To",
+				"Insert Part",
+				"Insert Object",
+				"View Script",
+				'Save Script',
+				"Save Instance",
+				"Copy Path",
+				"Call Function",
+				"Call Remote"
+			},
 			"",
 			false,
 			function(option)
@@ -4591,32 +4633,6 @@ A GUI panel that displays the game hierarchy.
 					Selection:Set({})
 				elseif option == "CopyPath" then
 					if not Option.Modifiable then return end
-					local function HasSpecial(string)
-						return (string:match("%c") or string:match("%s") or string:match("%p") or tonumber(string:sub(1,1))) ~= nil
-					end
-					local function GetPath(Instance)
-						local Obj = Instance
-						local string = {}
-						local temp = {}
-						local error = false
-
-						while Obj ~= game do
-							if Obj == nil then
-								error = true
-								break
-							end
-							table.insert(temp, Obj.Parent == game and Obj.ClassName or tostring(Obj))
-							Obj = Obj.Parent
-						end
-
-						table.insert(string, "game:GetService(\"" .. temp[#temp] .. "\")")
-
-						for i = #temp - 1, 1, -1 do
-							table.insert(string, HasSpecial(temp[i]) and "[\"" .. temp[i] .. "\"]" or "." .. temp[i])
-						end
-
-						return (error and "--Path contained invalid instance" or table.concat(string, ""))
-					end
 					local list = Selection:Get()
 					local namefull = ''
 					for i = 1,#list do
@@ -4713,6 +4729,14 @@ A GUI panel that displays the game hierarchy.
 						end
 						PromptSaveInstance(newModel)
 					end
+				elseif option == "Save Script" then
+					if not Option.Modifiable then return end
+					local list = Selection:Get()
+					for i = 1,#list do
+						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
+							writefile(game.PlaceId..'_'..list[i].Name:gsub('%W', '')..'_'..math.random(100000, 999999)..'.lua', decompile(list[i]));
+						end
+					end
 				elseif option == "Call Remote" then
 					if not Option.Modifiable then return end
 					local list = Selection:Get()
@@ -4725,9 +4749,9 @@ A GUI panel that displays the game hierarchy.
 				elseif option == "View Script" then
 					if not Option.Modifiable then return end
 					local list = Selection:Get()
-					for _,v in pairs(list) do
-						if v:IsA("LocalScript") or v:IsA("ModuleScript") then
-							ScriptEditorEvent:Fire(v)
+					for i = 1,#list do
+						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
+							ScriptEditorEvent:Fire(list[i])
 						end
 					end
 				end
