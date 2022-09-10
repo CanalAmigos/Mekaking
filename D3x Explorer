@@ -4579,7 +4579,6 @@ A GUI panel that displays the game hierarchy.
 				"Insert Part",
 				"Insert Object",
 				"View Script",
-				'Save Script',
 				"Save Instance",
 				"Copy Path",
 				"Call Function",
@@ -4729,14 +4728,6 @@ A GUI panel that displays the game hierarchy.
 						end
 						PromptSaveInstance(newModel)
 					end
-				elseif option == "Save Script" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
-							writefile(game.PlaceId..'_'..list[i].Name:gsub('%W', '')..'_'..math.random(100000, 999999)..'.lua', decompile(list[i]));
-						end
-					end
 				elseif option == "Call Remote" then
 					if not Option.Modifiable then return end
 					local list = Selection:Get()
@@ -4748,12 +4739,14 @@ A GUI panel that displays the game hierarchy.
 					end
 				elseif option == "View Script" then
 					if not Option.Modifiable then return end
+					CreateCaution("View Script","View Script is current broken please be patient")
+					--[[
 					local list = Selection:Get()
 					for i = 1,#list do
 						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
 							ScriptEditorEvent:Fire(list[i])
 						end
-					end
+					end]]
 				end
 			end)
 		currentRightClickMenu.Parent = explorerPanel.Parent
