@@ -4641,7 +4641,7 @@ A GUI panel that displays the game hierarchy.
 					for i = 1,#list do
 						if #list < 1 then break end
 						local props = ClassesProps[list[i].ClassName]
-						if props then
+						if props ~= nil then
 							full = full..'local V'..i..' = Instance.new(\''..list[i].ClassName..'\')\n'
 							for _,v in pairs(props) do
 								full = full..'V'..i..'.'..v..' = '..list[i][v]..'\n'
