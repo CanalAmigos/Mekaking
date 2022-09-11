@@ -4630,7 +4630,7 @@ A GUI panel that displays the game hierarchy.
 						pcall(delete,list[i])
 					end
 					Selection:Set({})
-				elseif option == "CopyPath" then
+				elseif option == "Copy Path" then
 					if not Option.Modifiable then return end
 					local list = Selection:Get()
 					local namefull = ''
