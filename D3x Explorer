@@ -4587,159 +4587,160 @@ A GUI panel that displays the game hierarchy.
 			"",
 			false,
 			function(option)
-				if option == "Cut" then
-					if not Option.Modifiable then return end
-					clipboard = {}
-					local list = Selection.List
-					local cut = {}
-					for i = 1,#list do
-						local obj = list[i]:Clone()
-						if obj then
-							table.insert(clipboard,obj)
-							table.insert(cut,list[i])
-						end
-					end
-					for i = 1,#cut do
-						pcall(delete,cut[i])
-					end
-					updateActions()
-				elseif option == "Copy" then
-					if not Option.Modifiable then return end
-					clipboard = {}
-					local list = Selection.List
-					for i = 1,#list do
-						table.insert(clipboard,list[i]:Clone())
-					end
-					updateActions()
-				elseif option == "Paste Into" then
-					if not Option.Modifiable then return end
-					local parent = Selection.List[1] or workspace
-					for i = 1,#clipboard do
-						clipboard[i]:Clone().Parent = parent
-					end
-				elseif option == "Duplicate" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					for i = 1,#list do
-						list[i]:Clone().Parent = Selection.List[1].Parent or workspace
-					end
-				elseif option == "Delete" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					for i = 1,#list do
-						pcall(delete,list[i])
-					end
-					Selection:Set({})
-				elseif option == "Copy Path" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					local namefull = ''
-					for i = 1,#list do
-						if #list < 1 then break end
-						if i > 1 then
-							namefull = namefull.."\n"..GetPath(list[i])
-						else
-							namefull = GetPath(list[i])
-						end
-					end
-					if Clipboard and Clipboard.set then
-						Clipboard.set(namefull)
-					elseif CopyString then
-						CopyString(namefull)
-					elseif setclipboard then
-						setclipboard(namefull)
-					end
-				elseif option == "Group" then
-					if not Option.Modifiable then return end
-					local newModel = Instance.new("Model")
-					local list = Selection:Get()
-					newModel.Parent = Selection.List[1].Parent or workspace
-					for i = 1,#list do
-						list[i].Parent = newModel
-					end
-					Selection:Set({})
-				elseif option == "Ungroup" then
-					if not Option.Modifiable then return end
-					local ungrouped = {}
-					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("Model") then
-							for i2,v2 in pairs(list[i]:GetChildren()) do
-								v2.Parent = list[i].Parent or workspace
-								table.insert(ungrouped,v2)
-							end		
-							pcall(delete,list[i])			
-						end
-					end
-					Selection:Set({})
-					if SettingsRemote:Invoke("SelectUngrouped") then
-						for i,v in pairs(ungrouped) do
-							Selection:Add(v)
-						end
-					end
-				elseif option == "Select Children" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					Selection:Set({})
-					Selection:StopUpdates()
-					for i = 1,#list do
-						for i2,v2 in pairs(list[i]:GetChildren()) do
-							Selection:Add(v2)
-						end
-					end
-					Selection:ResumeUpdates()
-				elseif option == "Teleport To" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("BasePart") then
-							pcall(function()
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = list[i].CFrame
-							end)
-							break
-						end
-					end
-				elseif option == "Insert Part" then
-					if not Option.Modifiable then return end
-					local insertedParts = {}
-					local list = Selection:Get()
-					for i = 1,#list do
-						pcall(function()
-							local newPart = Instance.new("Part")
-							newPart.Parent = list[i]
-							newPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.Head.Position) + Vector3.new(0,3,0)
-							table.insert(insertedParts,newPart)
-						end)
-					end
-				elseif option == "Save Instance" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					if #list == 1 then
-						list[1].Archivable = true
-						ypcall(function()PromptSaveInstance(list[1]:Clone())end)
-					elseif #list > 1 then
-						local newModel = Instance.new("Model")
-						newModel.Name = "SavedInstances"
+				pcall(function()
+					if option == "Cut" then
+						if not Option.Modifiable then return end
+						clipboard = {}
+						local list = Selection.List
+						local cut = {}
 						for i = 1,#list do
-							ypcall(function()
-								list[i].Archivable = true
-								list[i]:Clone().Parent = newModel
+							local obj = list[i]:Clone()
+							if obj then
+								table.insert(clipboard,obj)
+								table.insert(cut,list[i])
+							end
+						end
+						for i = 1,#cut do
+							pcall(delete,cut[i])
+						end
+						updateActions()
+					elseif option == "Copy" then
+						if not Option.Modifiable then return end
+						clipboard = {}
+						local list = Selection.List
+						for i = 1,#list do
+							table.insert(clipboard,list[i]:Clone())
+						end
+						updateActions()
+					elseif option == "Paste Into" then
+						if not Option.Modifiable then return end
+						local parent = Selection.List[1] or workspace
+						for i = 1,#clipboard do
+							clipboard[i]:Clone().Parent = parent
+						end
+					elseif option == "Duplicate" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						for i = 1,#list do
+							list[i]:Clone().Parent = Selection.List[1].Parent or workspace
+						end
+					elseif option == "Delete" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						for i = 1,#list do
+							pcall(delete,list[i])
+						end
+						Selection:Set({})
+					elseif option == "Copy Path" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						local namefull = ''
+						for i = 1,#list do
+							if #list < 1 then break end
+							if i > 1 then
+								namefull = namefull.."\n"..GetPath(list[i])
+							else
+								namefull = GetPath(list[i])
+							end
+						end
+						if Clipboard and Clipboard.set then
+							Clipboard.set(namefull)
+						elseif CopyString then
+							CopyString(namefull)
+						elseif setclipboard then
+							setclipboard(namefull)
+						end
+					elseif option == "Group" then
+						if not Option.Modifiable then return end
+						local newModel = Instance.new("Model")
+						local list = Selection:Get()
+						newModel.Parent = Selection.List[1].Parent or workspace
+						for i = 1,#list do
+							list[i].Parent = newModel
+						end
+						Selection:Set({})
+					elseif option == "Ungroup" then
+						if not Option.Modifiable then return end
+						local ungrouped = {}
+						local list = Selection:Get()
+						for i = 1,#list do
+							if list[i]:IsA("Model") then
+								for i2,v2 in pairs(list[i]:GetChildren()) do
+									v2.Parent = list[i].Parent or workspace
+									table.insert(ungrouped,v2)
+								end		
+								pcall(delete,list[i])			
+							end
+						end
+						Selection:Set({})
+						if SettingsRemote:Invoke("SelectUngrouped") then
+							for i,v in pairs(ungrouped) do
+								Selection:Add(v)
+							end
+						end
+					elseif option == "Select Children" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						Selection:Set({})
+						Selection:StopUpdates()
+						for i = 1,#list do
+							for i2,v2 in pairs(list[i]:GetChildren()) do
+								Selection:Add(v2)
+							end
+						end
+						Selection:ResumeUpdates()
+					elseif option == "Teleport To" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						for i = 1,#list do
+							if list[i]:IsA("BasePart") then
+								pcall(function()
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = list[i].CFrame
+								end)
+								break
+							end
+						end
+					elseif option == "Insert Part" then
+						if not Option.Modifiable then return end
+						local insertedParts = {}
+						local list = Selection:Get()
+						for i = 1,#list do
+							pcall(function()
+								local newPart = Instance.new("Part")
+								newPart.Parent = list[i]
+								newPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.Head.Position) + Vector3.new(0,3,0)
+								table.insert(insertedParts,newPart)
 							end)
 						end
-						PromptSaveInstance(newModel)
-					end
-				elseif option == "Call Remote" then
-					if not Option.Modifiable then return end
-					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("RemoteFunction") or list[i]:IsA("RemoteEvent") then
-							PromptRemoteCaller(list[i])
-							break
+					elseif option == "Save Instance" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						if #list == 1 then
+							list[1].Archivable = true
+							ypcall(function()PromptSaveInstance(list[1]:Clone())end)
+						elseif #list > 1 then
+							local newModel = Instance.new("Model")
+							newModel.Name = "SavedInstances"
+							for i = 1,#list do
+								ypcall(function()
+									list[i].Archivable = true
+									list[i]:Clone().Parent = newModel
+								end)
+							end
+							PromptSaveInstance(newModel)
 						end
-					end
-				elseif option == "View Script" then
-					if not Option.Modifiable then return end
-					CreateCaution("View Script","View Script is current broken please be patient")
+					elseif option == "Call Remote" then
+						if not Option.Modifiable then return end
+						local list = Selection:Get()
+						for i = 1,#list do
+							if list[i]:IsA("RemoteFunction") or list[i]:IsA("RemoteEvent") then
+								PromptRemoteCaller(list[i])
+								break
+							end
+						end
+					elseif option == "View Script" then
+						if not Option.Modifiable then return end
+						CreateCaution("View Script","View Script is current broken please be patient")
 					--[[
 					local list = Selection:Get()
 					for i = 1,#list do
@@ -4747,7 +4748,8 @@ A GUI panel that displays the game hierarchy.
 							ScriptEditorEvent:Fire(list[i])
 						end
 					end]]
-				end
+					end
+				end)
 			end)
 		currentRightClickMenu.Parent = explorerPanel.Parent
 		currentRightClickMenu.Position = UDim2.new(0,mouse.X,0,mouse.Y)
