@@ -4537,11 +4537,11 @@ A GUI panel that displays the game hierarchy.
 			CurrentInsertObjectWindow.Visible = false
 		end
 	end
-	
+
 	local function HasSpecial(string)
 		return (string:match("%c") or string:match("%s") or string:match("%p") or tonumber(string:sub(1,1))) ~= nil
 	end
-	
+
 	local function GetPath(Instance)
 		local Obj = Instance
 		local string = {}
@@ -4740,14 +4740,12 @@ A GUI panel that displays the game hierarchy.
 						end
 					elseif option == "View Script" then
 						if not Option.Modifiable then return end
-						CreateCaution("View Script","View Script is current broken please be patient")
-					--[[
-					local list = Selection:Get()
-					for i = 1,#list do
-						if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
-							ScriptEditorEvent:Fire(list[i])
+						local list = Selection:Get()
+						for i = 1,#list do
+							if list[i]:IsA("LocalScript") or list[i]:IsA("ModuleScript") then
+								ScriptEditorEvent:Fire(list[i])
+							end
 						end
-					end]]
 					end
 				end)
 			end)
