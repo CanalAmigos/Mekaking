@@ -1,0 +1,442 @@
+local tableA = {}
+
+					local listopend = false
+
+					local SearchLock = true
+
+					local selectedvalue 
+
+					if options and not playerlist then
+						tableA = {}
+						tableA = options
+					elseif options and playerlist then 
+						tableA = {}
+						for i,v in pairs(options) do 
+							table.insert(tableA, v)
+						end 
+						local list = game:GetService("Players")
+						for a,b in pairs(list:GetChildren()) do 
+							if b:IsA("Player") then
+								table.insert(tableA, b.Name)
+							end 
+						end
+					elseif not options and playerlist then 
+						tableA = {}
+						local list = game:GetService("Players")
+						for a,b in pairs(list:GetChildren()) do 
+							if b:IsA("Player") then
+								table.insert(tableA, b.Name)
+							end 
+						end
+					end
+
+					dropdowns.background = library.create("ImageLabel", {
+						Name = name.."DropDown",
+						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+						BackgroundTransparency = 1.000,
+						BorderColor3 = Color3.fromRGB(27, 42, 53),
+						ClipsDescendants = true,
+						Position = UDim2.new(0, 11, 0, 40),
+						Size = UDim2.new(0.963999987, 0, 0, 30),
+						Image = "rbxassetid://3570695787",
+						ImageColor3 = Color3.fromRGB(29, 29, 35),
+						ImageTransparency = 1.000,
+						ScaleType = Enum.ScaleType.Slice,
+						SliceCenter = Rect.new(100, 100, 100, 100),
+						SliceScale = 0.040,
+					})
+					dropdowns.background.ClipsDescendants = true
+
+					dropdowns.background2 = library.create("ImageLabel", {
+						Name = "Background",
+						BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+						BackgroundTransparency = 1.000,
+						BorderColor3 = Color3.fromRGB(27, 42, 53),
+						Size = UDim2.new(1, 0, 0, 30),
+						Image = "rbxassetid://3570695787",
+						ImageColor3 = Themes.AccentColor,
+						ScaleType = Enum.ScaleType.Slice,
+						SliceCenter = Rect.new(100, 100, 100, 100),
+						SliceScale = 0.040,
+					})
+					table.insert(ObjectsSearch, dropdowns.background2)
+					table.insert(Objects.AccentColor, dropdowns.background2)
+
+					dropdowns.textbox = library.create("TextBox", {
+						Active = false,
+						BackgroundColor3 = Color3.fromRGB(248, 248, 248),
+						BackgroundTransparency = 1.000,
+						BorderSizePixel = 0,
+						Position = UDim2.new(0.00800000038, 0, 0, 0),
+						Selectable = false,
+						Size = UDim2.new(0.9, 0, 1, 0),
+						Font = Enum.Font.GothamBold,
+						TextColor3 = Color3.fromRGB(255, 255, 255),
+						TextSize = 18.000,
+						Text = name,
+						TextXAlignment = Enum.TextXAlignment.Left,
+					})
+					table.insert(Objects.TextColor, dropdowns.textbox)
+
+					dropdowns.arrow = library.create("ImageButton", {
+						Name = "Arrow",
+						BackgroundColor3 = Color3.fromRGB(248, 248, 248),
+						BackgroundTransparency = 1.000,
+						BorderColor3 = Color3.fromRGB(27, 42, 53),
+						BorderSizePixel = 0,
+						Position = UDim2.new(1, -32, 0.0333333351, 0),
+						Rotation = 90.000,
+						AutoButtonColor = false,
+						ImageColor3 = Themes.TextColor,
+						Size = UDim2.new(0, 28, 0, 28),
+						Image = "http://www.roblox.com/asset/?id=5054982349",
+					})
+					table.insert(Objects.TextColor, dropdowns.arrow)
+
+					dropdowns.backgroundlist = library.create("ImageLabel", {
+						Name = "Backgroundlist",
+						BackgroundColor3 = Color3.fromRGB(248, 248, 248),
+						BackgroundTransparency = 1.000,
+						BorderColor3 = Color3.fromRGB(27, 42, 53),
+						Position = UDim2.new(0, 0, 0, 40),
+						Size = UDim2.new(1, 0, 0, 120),
+						ZIndex = 2,
+						Image = "rbxassetid://3570695787",
+						ImageColor3 = Color3.fromRGB(math.floor(Themes.GrayContrastColor.r * 255) - 3, math.floor(Themes.GrayContrastColor.g * 255) - 3, math.floor(Themes.GrayContrastColor.b * 255) - 3),
+						ScaleType = Enum.ScaleType.Slice,
+						SliceCenter = Rect.new(100, 100, 100, 100),
+						SliceScale = 0.040,
+					})
+					table.insert(Objects.GrayContrastColor, dropdowns.backgroundlist)
+
+					dropdowns.list = library.create("ScrollingFrame", {
+						BackgroundColor3 = Color3.fromRGB(29, 29, 35),
+						BackgroundTransparency = 1.000,
+						BorderSizePixel = 0,
+						Size = UDim2.new(1, 0, 1, 0),
+						ZIndex = 2,
+						CanvasSize = UDim2.new(0, 0, 0, 0),
+						ScrollBarImageColor3 = Color3.fromRGB(35 - 5, 35 - 5, 35 - 5),
+						ScrollBarThickness = 3,
+					})
+
+					dropdowns.listlayout = library.create("UIListLayout", {
+						SortOrder = Enum.SortOrder.LayoutOrder,
+						Padding = UDim.new(0, 10),
+					})
+
+					dropdowns.listpadding = library.create("UIPadding", {
+						PaddingBottom = UDim.new(0, 10),
+						PaddingLeft = UDim.new(0, 10),
+						PaddingTop = UDim.new(0, 10),						
+					})
+
+					local function HideShowList()
+						if not listopend then
+							ts:Create(dropdowns.arrow, TweenInfo.new(0.1), {Rotation = 90}):Play()
+							ts:Create(sections.section, TweenInfo.new(0.1), {Size = sections.section.Size - UDim2.new(0, 0, 0, 125)}):Play()
+							ts:Create(category.categoryscrolling, TweenInfo.new(0.1), {CanvasSize = category.categoryscrolling.CanvasSize - UDim2.new(0, 0, 0, 125)}):Play()
+							ts:Create(dropdowns.background, TweenInfo.new(0.1), {Size = UDim2.new(0.964, 0, 0, 30)}):Play()
+						else
+							ts:Create(dropdowns.arrow, TweenInfo.new(0.1), {Rotation = 0}):Play()
+							ts:Create(sections.section, TweenInfo.new(0.1), {Size = sections.section.Size + UDim2.new(0, 0, 0, 125)}):Play()
+							ts:Create(dropdowns.list, TweenInfo.new(0.1), {CanvasSize = UDim2.new(0, 0, 0, dropdowns.list["UIListLayout"].AbsoluteContentSize.Y) + UDim2.new(0, 0, 0, 26)}):Play()
+							ts:Create(category.categoryscrolling, TweenInfo.new(0.1), {CanvasSize = category.categoryscrolling.CanvasSize + UDim2.new(0, 0, 0, 125)}):Play()
+							ts:Create(category.categoryscrolling, TweenInfo.new(0.1), {CanvasPosition = category.categoryscrolling.CanvasPosition + Vector2.new(0, 125)}):Play()
+							ts:Create(dropdowns.background, TweenInfo.new(0.1), {Size = UDim2.new(0.964, 0, 0, 154)}):Play()
+						end
+					end
+
+					local function RefreshList(List)
+
+						for a, b in pairs(dropdowns.list:GetChildren()) do
+							if b:IsA("ImageButton") then
+								b:Destroy()
+							end
+						end
+
+						for i, v in pairs(List) do
+							local button = library.create("ImageButton", {
+								Name = string.lower(v),
+								AnchorPoint = Vector2.new(0.5, 0.5),
+								BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+								BackgroundTransparency = 1.000,
+								BorderColor3 = Color3.fromRGB(27, 42, 53),
+								Position = UDim2.new(0, 252, 0, 0),
+								Size = UDim2.new(0.98, 0, 0, 30),
+								ZIndex = 2,
+								AutoButtonColor = false,
+								Image = "rbxassetid://3570695787",
+								ImageColor3 = Themes.AccentColor,
+								ScaleType = Enum.ScaleType.Slice,
+								SliceCenter = Rect.new(100, 100, 100, 100),
+								SliceScale = 0.040,
+							})
+							table.insert(Objects.AccentColor, button)
+
+							local buttontext = library.create("TextLabel", {
+								BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+								BackgroundTransparency = 1.000,
+								BorderSizePixel = 0,
+								Position = UDim2.new(0.078, 0, 0, 0),
+								Size = UDim2.new(0.833, 0, 1, 0),
+								ZIndex = 2,
+								Font = Enum.Font.GothamBold,
+								Text = v,
+								TextColor3 = Themes.TextColor,
+								TextSize = 18,
+							})
+							table.insert(Objects.TextColor, buttontext)
+
+							button.Parent = dropdowns.list
+							buttontext.Parent = button
+
+							button.MouseButton1Click:Connect(function()
+								if listopend then
+
+									listopend = not listopend
+									dropdowns.textbox.Text = v
+
+									HideShowList()
+
+									if callback then
+										callback(v)
+									end
+								end
+							end)
+						end
+					end
+
+					local Found = {}
+					local searchtable = {}
+
+					for f,h in pairs(tableA) do
+						table.insert(searchtable, string.lower(h))
+					end
+
+					RefreshList(tableA)
+
+					dropdowns.textbox.Focused:Connect(function()
+						SearchLock = false
+						if not listopend then 
+							if beforeopen then 
+								local newtable = beforeopen()
+								tableA = newtable
+								for f,h in pairs(tableA) do
+									table.insert(searchtable, string.lower(h))
+								end
+							end
+							if options and playerlist then 
+								tableA = {}
+								for i,v in pairs(options) do 
+									table.insert(tableA, v)
+								end 
+								local list = game:GetService("Players")
+								for a,b in pairs(list:GetChildren()) do 
+									if b:IsA("Player") then
+										table.insert(tableA, b.Name)
+									end 
+								end
+							elseif not options and playerlist then 
+								tableA = {}
+								local list = game:GetService("Players")
+								for i,v in pairs(list:GetChildren()) do 
+									if v:IsA("Player") then
+										table.insert(tableA, v.Name)
+									end
+								end
+							end
+							listopend = not listopend
+							HideShowList()
+							RefreshList(tableA)
+						end
+					end)
+
+					dropdowns.arrow.MouseButton1Click:Connect(function()
+						listopend = not listopend
+						if beforeopen then 
+							local newtable = beforeopen()
+							tableA = newtable
+							for f,h in pairs(tableA) do
+								table.insert(searchtable, string.lower(h))
+							end
+						end
+						if options and playerlist then 
+							tableA = {}
+							for i,v in pairs(options) do 
+								table.insert(tableA, v)
+							end 
+							local list = game:GetService("Players")
+							for a,b in pairs(list:GetChildren()) do 
+								if b:IsA("Player") then
+									table.insert(tableA, b.Name)
+								end 
+							end
+						elseif not options and playerlist then 
+							tableA = {}
+							local list = game:GetService("Players")
+							for i,v in pairs(list:GetChildren()) do 
+								if v:IsA("Player") then
+									table.insert(tableA, v.Name)
+								end
+							end
+						end
+						HideShowList()
+						RefreshList(tableA)
+					end)
+
+					local function Edit()
+						for i in pairs(Found) do
+							Found[i] = nil
+						end
+						for h, l in pairs(dropdowns.list:GetChildren()) do
+							if not l:IsA("UIListLayout") and not l:IsA("UIPadding") then
+								l.Visible = false
+							end
+						end
+						dropdowns.textbox.Text = string.lower(dropdowns.textbox.Text)
+					end
+
+					local function Search()
+						local Results = {}
+						local num
+						for i, v in pairs(searchtable) do
+							if string.find(v, dropdowns.textbox.Text) then
+								table.insert(Found, v)
+							end
+						end
+						for a, b in pairs(dropdowns.list:GetChildren()) do
+							for c, d in pairs(Found) do
+								if d == b.Name then
+									b.Visible = true
+								end
+							end
+						end
+						for p, n in pairs(dropdowns.list:GetChildren()) do
+							if not n:IsA("UIListLayout") and not n:IsA("UIPadding") and n.Visible == true then
+								table.insert(Results, n)
+								for c, d in pairs(Results) do
+									num = c
+								end
+							end
+						end
+						if num ~= nil then
+							num = num * 40
+							dropdowns.list.CanvasSize = UDim2.new(0, 0, 0, num) + UDim2.new(0, 0, 0, 20)
+							num = 0
+						end
+					end
+
+					local function Nil()
+						for i, v in pairs(dropdowns.list:GetChildren()) do
+							if not v:IsA("UIListLayout") and not v:IsA("UIPadding") and v.Visible == false then
+								ts:Create(dropdowns.list, TweenInfo.new(0.1), {
+									CanvasSize = UDim2.new(0, 0, 0, dropdowns.list["UIListLayout"].AbsoluteContentSize.Y) + UDim2.new(0, 0, 0, 26)
+								}):Play()
+								v.Visible = true
+							end 
+						end
+					end
+
+					dropdowns.textbox.Changed:connect(function()
+						if not SearchLock then
+							Edit()
+							Search()
+						end
+						if dropdowns.textbox.Text == "" then
+							Nil()
+							ts:Create(dropdowns.list, TweenInfo.new(0.1), {
+								CanvasSize = UDim2.new(0, 0, 0, dropdowns.list["UIListLayout"].AbsoluteContentSize.Y) + UDim2.new(0, 0, 0, 26)
+							}):Play()
+						end
+					end)
+
+					dropdowns.textbox.FocusLost:connect(function()
+						SearchLock = true
+						if dropdowns.textbox.Text == "" then
+							ts:Create(dropdowns.list, TweenInfo.new(0.1), {
+								CanvasSize = UDim2.new(0, 0, 0, dropdowns.list["UIListLayout"].AbsoluteContentSize.Y) + UDim2.new(0, 0, 0, 26)
+							}):Play()
+							SearchLock = true
+							Nil()
+							dropdowns.textbox.Text = name
+						end
+					end)
+
+					sections.section.Size = sections.section.Size + UDim2.new(0, 0, 0, 38)
+					category.categoryscrolling.CanvasSize = category.categoryscrolling.CanvasSize + UDim2.new(0, 0, 0, 38)
+
+					dropdowns.background.Parent = sections.section
+					dropdowns.background2.Parent = dropdowns.background
+					dropdowns.arrow.Parent = dropdowns.background2
+					dropdowns.textbox.Parent = dropdowns.background2	
+					dropdowns.backgroundlist.Parent = dropdowns.background
+					dropdowns.list.Parent = dropdowns.backgroundlist
+					dropdowns.listlayout.Parent = dropdowns.list 
+					dropdowns.listpadding.Parent = dropdowns.list
+					
+					function dropdowns:RefreshList(List: {string})
+						RefreshList(List)
+					end
+					
+					function dropdowns:AddItem(Name: string,TextColor: Color3,Callback: (Name))
+						local button = library.create("ImageButton", {
+							Name = string.lower(Name),
+							AnchorPoint = Vector2.new(0.5, 0.5),
+							BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+							BackgroundTransparency = 1.000,
+							BorderColor3 = Color3.fromRGB(27, 42, 53),
+							Position = UDim2.new(0, 252, 0, 0),
+							Size = UDim2.new(0.98, 0, 0, 30),
+							ZIndex = 2,
+							AutoButtonColor = false,
+							Image = "rbxassetid://3570695787",
+							ImageColor3 = Themes.AccentColor,
+							ScaleType = Enum.ScaleType.Slice,
+							SliceCenter = Rect.new(100, 100, 100, 100),
+							SliceScale = 0.040,
+						})
+						table.insert(Objects.AccentColor, button)
+
+						local buttontext = library.create("TextLabel", {
+							BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+							BackgroundTransparency = 1.000,
+							BorderSizePixel = 0,
+							Position = UDim2.new(0.078, 0, 0, 0),
+							Size = UDim2.new(0.833, 0, 1, 0),
+							ZIndex = 2,
+							Font = Enum.Font.GothamBold,
+							Text = Name,
+							TextColor3 = TextColor or Themes.TextColor,
+							TextSize = 18,
+						})
+						table.insert(Objects.TextColor, buttontext)
+
+						button.Parent = dropdowns.list
+						buttontext.Parent = button
+
+						button.MouseButton1Click:Connect(function()
+							if listopend then
+
+								listopend = not listopend
+								dropdowns.textbox.Text = Name
+
+								HideShowList()
+
+								if Callback then
+									Callback(Name)
+								elseif callback then
+									callback(Name)
+								end
+							end
+						end)
+						
+						return {
+							Remove = function()
+								ds:AddItem(button,0)
+							end,
+							SetTextColor = function(Col: Color3)
+								buttontext.TextColor3 = Col or Themes.TextColor
+							end,
+						}
+					end
